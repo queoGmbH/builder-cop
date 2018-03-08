@@ -1,0 +1,98 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://queo.de/schemas/settings/buildercop.json",
+  "title": "Schema für die Einstellungen für den BuilderCop",
+  "type": "object",
+  "additionalProperties": true,
+  "additionalItems": true,
+  "properties": {
+    "settings": {
+      "type": "object",
+      "description": "Konfiguration für den BuilderCop. Dieser generiert Builder für definierbare Klassen, mit deren Hilfe Instanzen dieser Klassen gebildet werden können.",
+      "additionalProperties": true,
+      "additionalItems": true,
+      "properties": {
+        "builderSettings": {
+          "type": "object",
+          "description": "Konfiguration für die Builder-Klassen, die verwendet werden, um Instanzen der zugehörigen Klassen zu bilden.",
+          "additionalProperties": false,
+          "additionalItems": false,
+          "properties": {
+            "namingPattern": {
+              "type": "object",
+              "description": "Namensmuster für eine Builder-Klasse.",
+              "additionalProperties": false,
+              "additionalItems": false,
+              "properties": {
+                "prefix": {
+                  "type": "string",
+                  "default": "",
+                  "description": "Der Präfix, der an jede Builder-Klasse vor dem Namen der Klasse die sie bildet, gehängt wird."
+                },
+                "suffix": {
+                  "type": "string",
+                  "default": "Builder",
+                  "description": "Der Suffix, der an jede Builder-Klasse hinter dem Namen der Klasse die sie bildet angehängt wird."
+                }
+              }
+            },
+            "baseClass": {
+              "type": "string",
+              "default": "Builder",
+              "description": "Der Suffix, der an jede Builder-Klasse hinter dem Namen der Klasse die sie bildet angehängt wird."
+            }
+          }
+        },
+        "builderFactorySettings": {
+          "type": "object",
+          "description": "Einstellungen für die Klasse, die als Factory zum bilden der Instanzen mithilfe der Builder verwendet wird.",
+          "additionalProperties": false,
+          "additionalItems": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "default": "Create",
+              "description": "Der voll-qualifizierte Name (inklusive Namespace) der Create-Klasse. Diese Klasse enthält die Aufrufe zur Erzeugung der Instanzen von den zu bildenden Klassen."
+            }
+          }
+        },
+        "builderForSettings": {
+          "type": "object",
+          "description": "Einstellungen für die Klassen, für welche Builder existieren bzw. generiert werden sollen.",
+          "additionalProperties": false,
+          "additionalItems": false,
+          "properties": {
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Liste mit expliziten Typen, für die ein Builder existieren muss."
+            },
+            "baseTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Liste der Typen, die wenn eine Klasse davon erbt, dazu führen, dass für diese Klasse die ein Builder existieren muss."
+            },
+            "markerInterfaces": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Liste der Marker-Interfaces, die dazu führen, dass wenn ein Klasse mindestens eines dieser Interfaces implementiert, ein Builder für diese Klasse existieren muss."
+            },
+            "markerAttributes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Liste mit Marker-Attributen, die dazu führen, dass wenn eine Klasse mit mindestens einem dieser Attribute ausgezeichnet ist, ein Builder für diese Klasse existieren muss."
+            }
+          }
+        }
+      }
+    }
+  }
+}

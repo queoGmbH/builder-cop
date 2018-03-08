@@ -1,0 +1,6 @@
+TestDataBuilderGenerator/TestDataBuilderGenerator.Vsix/bin/
+TestDataBuilderGenerator/TestDataBuilderGenerator.Vsix/obj/
+TestDataBuilderGenerator/TestDataBuilderGenerator/bin/
+TestDataBuilderGenerator/TestDataBuilderGenerator/obj/
+TestDataBuilderGenerator/TestDataBuilderGenerator.Test/obj/
+packages/
